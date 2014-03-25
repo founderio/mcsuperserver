@@ -44,7 +44,8 @@ This script is tested wtih Version 1.7.5.
 Although I suspect it will work with other versions as well, don't rely on it. You can tell if it is working by looking at what your server outputs when you type something in the ingame chat.
 If it looks like this you can use the original version:
 [code]2014-03-25 16:00:00 [INFO] <founderio> Some Chat Message[/code]
-But if it looks like this you need the modified version.
+
+But if it looks like this you need the modified version:
 [code][16:00:00] [Server thread/INFO]: <founderio> Some Chat Message[/code]
 If it looks completely different you can tell me and I can try make a version that supports that format.
 
