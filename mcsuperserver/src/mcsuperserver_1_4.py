@@ -5,6 +5,9 @@
 #   Copyright (C) 2011, 2012  Paul Andreassen
 #   paul@andreassen.com.au
 
+#   MC 1.4+ Version by Oliver Kahrmann (founderio), 2012
+#   oliver.kahrmann@gmail.com
+
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
 #   the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +29,8 @@
 # 0.06 20120520 scripting support and signal terminate support
 # 0.06.01 20120831 fix bug with python 2.4 and earier
 # 0.06.02 20120928 fix bug when getting handle_close on both server and proxy
+# 0.06.03 20131026 (founderio) modified for Minecraft 1.4+, Protocol Version & Minecraft Version read from config
+# 0.06.04 20131112 (founderio) fixed mistake in version definition
 
 # http://www.wiki.vg/Protocol#Server_List_Ping_.280xFE.29
 # https://gist.github.com/1209061
@@ -67,7 +72,9 @@ config['ss'] = {
         "host" : "",
         "port" : "25555",
         "command" : "java -Xmx1024M -Xms128M -jar minecraft_server.jar nogui",
-        "work-path" : ""
+        "work-path" : "",
+		"protocol-version" : "47",
+		"minecraft-version" : "1.4.2"
 }
 
 config['mcfile'] = "server.properties"
@@ -438,7 +445,10 @@ class mcStdoutHandler(asyncore.file_dispatcher):
             data = data[1:]
             print data
             if (len(self.login) > 0) and (
-                    (not self.foundDone and (data.find(" Done ") != -1)) or 
+                    #MinecraftForge v4.0.0.247 Initialized
+					#(not self.foundDone and (data.find("MinecraftForge v4.0.0.247 Initialized") != -1)) or 
+					#(not self.foundDone and (data.find(" Done ") != -1)) or 
+					(not self.foundDone and (data.find(" achievements") != -1)) or 
                     (self.foundDone and (data.find(" logged in ") != -1))):
                 while len(self.login) > 0:
                     obj = self.login.pop(0)
@@ -604,7 +614,7 @@ class ProxyHandler(asyncore.dispatcher_with_send):
                 if c == '\xFE': # 'Server List Ping'
                     log("Recieved 'Server List Ping'")
                     self.sent = self.close
-                    string = u'%s\xa7%d\xa7%d' % (config['mc']["motd"], 0, int(config['mc']["max-players"]))
+                    string = u'\xa71\x00%d\x00%s\x00%s\x00%d\x00%d' % (int(config['ss']["protocol-version"]), config['ss']["minecraft-version"], config['mc']["motd"], 0, int(config['mc']["max-players"]))
                     strlen = len(string)
                     string = string.encode('utf-16be')
                     desc = '\xFF' + struct.pack('>h%ds' % len(string), strlen, string)
@@ -765,6 +775,7 @@ def signalTERM(signalNumber, stackFrame):
 def main():
     global ss, ssStdin
     print "MCSuperServer " + str(VER) + " Copyright (C) 2011, 2012  Paul Andreassen\n" \
+          "Modifications by Oliver Kahrmann, 2012\n" \
           "This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.\n" \
           "This is free software, and you are welcome to redistribute it\n" \
           "under certain conditions; type `show c' for details.\n"

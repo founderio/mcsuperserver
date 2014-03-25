@@ -1,0 +1,55 @@
+Hello community,
+I run a server for me and a few freinds and I use the mcsuperserver.py script that some of you might know from this site:
+[url="http://members.iinet.net.au/~paulone/mcsuperserver.html"]http://members.iinet.net.au/~paulone/mcsuperserver.html[/url]
+
+The Version over there is not compatible since Minecraft Version 1.4.2 so when 1.4.2 came out I modified it to work again.
+Well, Minecraft 1.7 broke it again. So here I have a modified version for 1.7.2 and up, might as well share it!
+
+The original script is released under the GNU General Public License, so my version will be as well, just to make it easy.
+Give this script a try if you want. The script is tested on Windows & Mac, but should work on Linux too.
+
+
+[size=4][b]Minecraft Protocol Versions[/b][/size]
+
+For any different Minecraft Versions than the preset ones you need to adjust version and protocol version the superserver config file that gets generated on first launch.
+You can find some of the versions here: [url="http://wiki.vg/Protocol_History"]http://wiki.vg/Protocol_History[/url]
+For 1.6.2 it is 74, for 1.6.4 it is 78.
+A full list of the versions known to me can be downloaded here:
+[url="https://dl.dropboxusercontent.com/u/44836193/mcsuperserver/protocol_versions.txt"]protocol_versions.txt - Dropbox download[/url]
+
+[size=4][b]mcsuperserver.py[/b][/size]
+
+Here the 1.7 Version:
+This script is preset for Version 1.7.2.
+- future versions might need further adjustments.
+
+[url="https://dl.dropboxusercontent.com/u/44836193/mcsuperserver/mcsuperserver_1_7.py"]mcsuperserver_1_7.py - Dropbox download[/url]
+
+And for historical reasons (and old servers) the older Version for 1.4.2-1.6.4
+This script is preset for Version 1.4.2.
+
+[url="https://dl.dropboxusercontent.com/u/44836193/mcsuperserver/mcsuperserver_1_4.py"]mcsuperserver_1_4.py - Dropbox download[/url]
+
+And the original, unmodified script in case the original source gets lost:
+
+[url="https://dl.dropboxusercontent.com/u/44836193/mcsuperserver/mcsuperserver.py"]mcsuperserver.py - Dropbox download[/url]
+
+
+[size=4][b]mcsuperserverscript.py[/b][/size]
+
+I was asked to update the mcsuperserverscript.py as well, that came with the mcsuperserver to give users without op rights the ability to use some op commands as well as the ability to manage multiple worlds in one server.
+Here the 1.7 Version:
+This script is tested wtih Version 1.7.5.
+- future versions might need further adjustments.
+Although I suspect it will work with other versions as well, don't rely on it. You can tell if it is working by looking at what your server outputs when you type something in the ingame chat.
+If it looks like this you can use the original version:
+[code]2014-03-25 16:00:00 [INFO] <founderio> Some Chat Message[/code]
+But if it looks like this you need the modified version.
+[code][16:00:00] [Server thread/INFO]: <founderio> Some Chat Message[/code]
+If it looks completely different you can tell me and I can try make a version that supports that format.
+
+[url="https://dl.dropboxusercontent.com/u/44836193/mcsuperserver/mcsuperserverscript_1_7.py"]mcsuperserverscript_1_7.py - Dropbox download[/url]
+
+And again the original, unmodified script in case the original source gets lost:
+
+[url="https://dl.dropboxusercontent.com/u/44836193/mcsuperserver/mcsuperserverscript.py"]mcsuperserverscript.py - Dropbox download[/url]
