@@ -27,7 +27,7 @@
 # 0.03 20120526 (0.6) fix bug when the world is changed when no users connected
 # 0.04 20120527 (0.6) fix bug spaces in world names and motd is prepended with world name
 # 0.05 20120802 (0.6) had to change from using '/' for commands
-# 0.05 20140325 (0.7) (founderio) Changes in Command Line Output parsing, tested with 1.7.5
+# 0.06 20140325 (0.7) (founderio) Changes in Command Line Output parsing, tested with 1.7.5
 
 import mcsuperserver, re, os, os.path, textwrap
 

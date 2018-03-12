@@ -29,8 +29,8 @@
 # 0.06 20120520 scripting support and signal terminate support
 # 0.06.01 20120831 fix bug with python 2.4 and earier
 # 0.06.02 20120928 fix bug when getting handle_close on both server and proxy
-# 0.06.03 20131026 (founderio) modified for Minecraft 1.4+, Protocol Version & Minecraft Version read from config
-# 0.06.04 20131112 (founderio) fixed mistake in version definition
+# 0.07 20131026 (founderio) modified for Minecraft 1.4+, Protocol Version & Minecraft Version read from config
+# 0.07.01 20131112 (founderio) fixed mistake in version definition
 
 # http://www.wiki.vg/Protocol#Server_List_Ping_.280xFE.29
 # https://gist.github.com/1209061
@@ -57,7 +57,7 @@ import os, os.path, sys, shlex, asyncore, subprocess, struct, socket, threading,
 # always go to the main thread.)
 
 
-VER = 0.06
+VER = 0.07
 ss = None
 ssStdin = None
 mcProcess = None
